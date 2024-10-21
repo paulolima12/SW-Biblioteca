@@ -15,10 +15,10 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
-    <body id="page-top">
+    <body id="page-top" style="height: 100vh;">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-            <div class="container px-5">
+            <div class="container px-5" style="z-index: 10; position: relative">
                 <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -44,14 +44,14 @@
             <div class="bg-circle-4 bg-circle"></div>
         </header> -->
         <!-- Content section 1-->
-        <section id="contact">
-            <div class="container-lg">
+        <section id="contact" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+            <div class="container-sm col-lg-3" style="border: 1px solid black; border-radius: 1em; padding-top: 2em ;">
                 <div class="row text-center">
                     <h2>Login</h2>
                     <p class="lead">Preencha os dados</p>
                 </div>
                 <div class="row justify-content-center my-5">
-                    <div class="col-lg-3">
+                    <div class="col-lg-6">
                         <form>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Email</label>

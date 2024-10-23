@@ -1,0 +1,62 @@
+/* Sidebar */
+#sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #343a40;
+    color: white;
+    padding-top: 20px;
+}
+
+#sidebar h3 {
+    text-align: center;
+    color: white;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    list-style: none;
+}
+
+#sidebar ul li {
+    padding: 10px;
+    font-size: 18px;
+}
+
+#sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+}
+
+/* Page Content */
+#page-content-wrapper {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.card .card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card .card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card .card-text {
+    font-size: 24px;
+    font-weight: bold;
+}

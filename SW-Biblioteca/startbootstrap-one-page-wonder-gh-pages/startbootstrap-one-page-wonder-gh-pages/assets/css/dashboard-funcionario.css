@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    position: fixed;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+}
+
+.header {
+    background-color: #f8f8f8;
+    padding: 15px;
+}
+
+.tasks {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.tasks h2 {
+    margin-top: 0;
+}
+
+.tasks ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tasks ul li {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}

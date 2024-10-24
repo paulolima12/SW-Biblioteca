@@ -5,3 +5,12 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+document.querySelector('form').addEventListener('submit', function(event) {
+    const email = document.getElementById('exampleFormControlInput1').value;
+    const senha = document.getElementById('senha').value;
+
+    if (!email || !senha) {
+        alert('Preencha todos os campos');
+        event.preventDefault();
+    }
+});

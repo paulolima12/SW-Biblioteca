@@ -1,3 +1,17 @@
+/* Definição de variáveis de cor */
+:root {
+    --bs-primary: #ee0979;
+    --bs-secondary: #ff6a00;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+    --bs-gray-dark: #343a40;
+    --bs-white: #ffffff;
+}
+
 /* Sidebar */
 #sidebar {
     width: 250px;
@@ -5,14 +19,14 @@
     position: fixed;
     top: 0;
     left: 0;
-    background: #343a40;
-    color: white;
+    background: var(--bs-gray-dark);
+    color: var(--bs-white);
     padding-top: 20px;
 }
 
 #sidebar h3 {
     text-align: center;
-    color: white;
+    color: var(--bs-white);
 }
 
 #sidebar ul.components {
@@ -26,13 +40,13 @@
 }
 
 #sidebar ul li a {
-    color: white;
+    color: var(--bs-white);
     text-decoration: none;
 }
 
 #sidebar ul li a:hover {
-    background: #007bff;
-    color: white;
+    background: var(--bs-primary);
+    color: var(--bs-white);
     text-decoration: none;
 }
 

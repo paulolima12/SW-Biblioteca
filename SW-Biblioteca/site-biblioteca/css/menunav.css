@@ -5,9 +5,24 @@
     box-sizing: border-box;
 }
 
+/* Definição de variáveis de cor */
+:root {
+    --bs-primary: #ee0979;
+    --bs-secondary: #ff6a00;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+    --bs-white: #ffffff;
+    --bs-gray: #6c757d;
+    --bs-border-color: #dee2e6;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: var(--bs-light);
 }
 
 /* Barra de navegação */
@@ -15,12 +30,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #005f73;
+    background-color: var(--bs-dark);
     padding: 20px;
 }
 
 .navbar .logo h1 {
-    color: white;
+    color: var(--bs-white);
     font-size: 24px;
 }
 
@@ -34,7 +49,7 @@ body {
 }
 
 .navbar .menu li a {
-    color: white;
+    color: var(--bs-white);
     text-decoration: none;
     font-weight: bold;
 }
@@ -53,25 +68,26 @@ body {
     border-radius: 20px 0 0 20px;
     outline: none;
     width: 200px;
+    background-color: var(--bs-gray-100);
 }
 
 .search-bar button {
     padding: 10px;
-    background-color: #00b4d8;
+    background-color: var(--bs-info);
     border: none;
-    color: white;
+    color: var(--bs-white);
     border-radius: 0 20px 20px 0;
     cursor: pointer;
 }
 
 .search-bar button:hover {
-    background-color: #0096c7;
+    background-color: var(--bs-secondary);
 }
 
 /* Filtros */
 .filtros {
     padding: 40px;
-    background-color: white;
+    background-color: var(--bs-white);
     margin: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -95,24 +111,24 @@ body {
 .filtro label {
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: var(--bs-dark);
     font-size: 14px;
 }
 
 .filtro input[type="text"], .filtro select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--bs-border-color);
     border-radius: 5px;
     font-size: 14px;
     outline: none;
-    background-color: #fafafa;
+    background-color: var(--bs-gray-100);
 }
 
 input[type="submit"] {
     padding: 10px 20px;
-    background-color: #0077b6;
-    color: white;
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -120,5 +136,5 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #005f73;
+    background-color: var(--bs-dark);
 }

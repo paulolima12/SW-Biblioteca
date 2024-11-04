@@ -24,6 +24,7 @@ if (isset($_SESSION['id_usuario'])) {
     <title>Login - Biblioteca Online</title>
     <link rel="icon" type="image/png" href="img/FAVICON.png" />
 
+
     <!-- Font Awesome icons (free version) -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
@@ -35,6 +36,13 @@ if (isset($_SESSION['id_usuario'])) {
 
     <!-- Core theme CSS (includes Bootstrap) -->
     <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        #contact {
+            background-image: url('img/biblioteca_leonardo.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body id="page-top" style="height: 100vh;">
@@ -59,7 +67,7 @@ if (isset($_SESSION['id_usuario'])) {
 
     <!-- Login Section -->
     <section id="contact" style="display: flex; align-items: center; justify-content: center; height: 100%;">
-        <div class="container-sm col-lg-5" style="border: 1px solid black; border-radius: 1em; padding-top: 2em;">
+        <div class="container-sm col-lg-5" style="border: 1px solid black; border-radius: 1em; padding-top: 2em;background-color: white;">
             <div class="row text-center">
                 <h2>Login</h2>
                 <p class="lead">Preencha os dados</p>
@@ -106,6 +114,7 @@ if (isset($_SESSION['id_usuario'])) {
                 event.preventDefault();
             }
         });
+
     </script>
 </body>
 

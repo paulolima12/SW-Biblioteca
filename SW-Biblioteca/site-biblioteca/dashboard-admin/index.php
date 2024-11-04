@@ -30,7 +30,9 @@
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple">
+
                         <thead>
+                    
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">ISBN</th>

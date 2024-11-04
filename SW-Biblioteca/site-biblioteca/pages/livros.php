@@ -32,7 +32,7 @@
 
     <!-- Core theme CSS (includes Bootstrap) -->
     <link href="../css/styles.css" rel="stylesheet" />
-    
+
     <style>
         body {
             color: #666; /* Um tom suave de cinza */

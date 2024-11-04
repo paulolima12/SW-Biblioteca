@@ -360,7 +360,7 @@ insert into administrador (cpf, nome, email, senha) values
 
 # FUNCIONARIO (teste) senha: senhaFUNC1234
 insert into funcionario (cpf, nome, email, senha) values 
-("45045045088", "João Gomes", "emailtestefuncionario@gmail.com", "bf0acf7516322a333e98690760bdddf5");
+("45045045088", "João Gomes", "emailtestefuncionario@gmail.com", "bf0acf7516322a333e98690760bdddf");
 
 
 # USUARIO (teste) senha: senhaUSER1234

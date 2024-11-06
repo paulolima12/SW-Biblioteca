@@ -1,7 +1,5 @@
 <?php
 session_start();
-<link href="css/styles.css" rel="stylesheet" />
-
 
 if ((!isset($_SESSION['id_funcionario']) == true) && (!isset($_SESSION['nome']) == true) && (!isset($_SESSION['email'])) == true) {
 
@@ -23,8 +21,7 @@ include 'menu.php';
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Dashboard de funcionário</li>
             </ol>
-            <a href='form_insere_clientes.php'><button class='btn btn-outline-secondary'
-                    style="margin-bottom: 1rem;">Inserir livros</button></a>
+            <button class='btn btn-outline-secondary' style="margin-bottom: 1rem;" data-bs-toggle="modal" data-bs-target="#bookModal">Inserir livros</button>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
@@ -67,6 +64,59 @@ include 'menu.php';
             </div>
         </div>
     </main>
+    <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookModalLabel">Novo Livro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="bookForm" method="POST" action="form_insere_livro.php">
+                    <div class="mb-3">
+                        <label for="isbn" class="form-label">ISBN</label>
+                        <input type="text" class="form-control" id="isbn" name="isbn" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="titulo" name="titulo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ano_publicacao" class="form-label">Ano de Publicação</label>
+                        <input type="number" class="form-control" id="ano_publicacao" name="ano_publicacao" required>
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="id_editora" class="form-label">Publisher</label>
+                        <select class="form-select" id="id_editora" name="id_editora" required>
+                        <option value="1">Publisher 1</option>
+                        <option value="2">Publisher 2</option>
+                        <option value="3">Publisher 3</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_genero" class="form-label">Genre</label>
+                        <select class="form-select" id="id_genero" name="id_genero" required>
+                        <option value="1">Fiction</option>
+                        <option value="2">Non-Fiction</option>
+                        <option value="3">Mystery</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-select" id="status" name="status" required>
+                        <option value="1">Available</option>
+                        <option value="0">Unavailable</option>
+                        </select>
+                    </div> -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
     <footer class="py-4 bg-light mt-auto">
         <div class="container-fluid px-4">
             <div class="d-flex align-items-center justify-content-between small">

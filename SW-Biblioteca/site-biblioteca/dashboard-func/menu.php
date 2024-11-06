@@ -1,7 +1,5 @@
 <?php
 session_start();
-<link href="css/styles.css" rel="stylesheet" />
-
 
 if ((!isset($_SESSION['id_funcionario']) == true) && (!isset($_SESSION['nome']) == true) && (!isset($_SESSION['email'])) == true) {
 

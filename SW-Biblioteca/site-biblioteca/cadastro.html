@@ -18,12 +18,59 @@
         rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        #contact {
+            background-image: url('img/biblioteca_leonardo.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding-top: 10%;
+        }
+
+        #contact .container-sm {
+            background-color: rgba(255, 255, 255, 0.86);
+            border-radius: 15px;
+            padding: 2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+        }
+        #contact h2 {
+            color: #333;
+            font-weight: 700;
+        }
+        #contact p.lead {
+            color: #666;
+        }
+        #contact input[type="text"],
+        #contact input[type="email"],
+        #contact input[type="password"],
+        #contact input[type="char"] {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 0.75em;
+            font-size: 1em;
+        }
+        #contact input[type="submit"] {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.75em;
+            font-weight: bold;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1em;
+        }
+        #contact input[type="submit"]:hover {
+            background-color: #e03370;
+        }
+    </style>
 </head>
 
-<body id="page-top" style="height: 100vh;">
+<body id="page-top" style="min-height: auto;">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
-        <div class="container px-5" style="z-index: 10; position: relative">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container px-5" style="z-index: 10; position: relative;">
             <a class="navbar-brand" href="index.html">Biblioteca Online</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
@@ -50,8 +97,10 @@
             <div class="bg-circle-4 bg-circle"></div>
         </header> -->
     <!-- Content section 1-->
-    <section id="contact" style="display: flex; align-items: center; justify-content: center; height: 100%;">
-        <div class="container-sm col-lg-5" style="border: 1px solid black; border-radius: 1em; padding-top: 2em ;">
+    <section id="contact"
+        style="display: flex; align-items: center; justify-content: center; height: 100%; padding-bottom: 3%;">
+        <div class="container-sm col-lg-5"
+            style="border: 1px solid black; border-radius: 1em; padding-top: 1.5em;">
             <div class="row text-center">
                 <h2>Cadastro</h2>
                 <p class="lead">Preencha os dados</p>
@@ -61,11 +110,13 @@
                     <form action="processa_cadastro.php" method="POST">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">CPF</label>
-                            <input type="char" name="cpf_cadastro" class="form-control" id="exampleFormControlInput1" placeholder="123.456.789-0" maxlength="10" required>
+                            <input type="char" name="cpf_cadastro" class="form-control" id="exampleFormControlInput1"
+                                placeholder="123.456.789-0" maxlength="10" required>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Nome</label>
-                            <input type="text" name="nome_cadastro" class="form-control" id="exampleFormControlInput1" placeholder="Seu nome" required>
+                            <input type="text" name="nome_cadastro" class="form-control" id="exampleFormControlInput1"
+                                placeholder="Seu nome" required>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Email</label>
@@ -74,8 +125,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Senha</label>
-                            <input type="password" name="senha_cadastro" class="form-control" id="exampleFormControlInput1"
-                                placeholder="********" required>
+                            <input type="password" name="senha_cadastro" class="form-control"
+                                id="exampleFormControlInput1" placeholder="********" required>
                         </div>
 
                         <input type="submit" value="Fazer cadastro" class="btn btn-primary" style="width: 100%;">

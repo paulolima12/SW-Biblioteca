@@ -23,6 +23,7 @@ CREATE TABLE livro (
     ano_publicacao year,
     id_editora int,
     id_genero int,
+    capa varchar(100),
     status ENUM('disponível', 'emprestado') DEFAULT 'disponível',
     FOREIGN KEY (id_editora) REFERENCES editora(id_editora),
     FOREIGN KEY (id_genero) REFERENCES genero(id_genero)
@@ -246,57 +247,57 @@ insert into genero (genero) values
 
 
 # LIVROS
-insert into livro (isbn, titulo, ano_publicacao, id_editora, id_genero) values 
-("978-8563560568", "Ilíada", 2013, 1, 1),
-("978-8563560278", "Odisseia", 2011, 1, 1),
-("978-8582850145", "Hamlet", 2015, 1, 2),
-("978-8563560551", "Dom Quixote", 2012, 1, 15),
-("978-8573261202", "A Divina Comédia", 2017, 2, 6),
-("978-8520926505", "Em Busca do Tempo Perdido", 2017, 3, 3),
-("978-8563560421", "Ulysses", 2012, 1, 3),
-("978-8535930047", "Guerra e paz", 2017, 4, 4),
-("978-8573266467", "Crime e castigo", 2016, 2, 14),
-("978-8563560063", "Os ensaios", 2010, 1, 5),
-("978-8537817360", "Édipo Rei", 2018, 5, 2),
-("978-8582850459", "Otelo", 2017, 1, 2),
-("978-8563560315", "Madame Bovary", 2011, 1, 3),
-("978-6555250442", "Fausto", 2023, 2, 2),
-("978-8535907438", "O processo", 2005, 6, 13),
-("978-8535926484", "Doutor Fausto", 2015, 4, 27),
-("978-8582850930", "As flores do mal", 2019, 1, 6),
-("978-8535929423", "O Som e a Fúria", 2017, 4, 3),
-("978-8535931785", "A terra devastada", 2018, 4, 7),
-("978-6589705581", "Teogonia", 2022, 7, 1),
-("978-8582851784", "Metamorfoses", 2023, 1, 6),
-("978-8582850725", "O Vermelho e o Negro", 2018, 1, 14),
-("978-8563560292", "O Grande Gatsby", 2011, 1, 3),
-("978-8525406712", "Uma Temporada no Inferno", 2006, 8, 6),
-("978-8582850480", "Os miseráveis", 2017, 1, 3),
-("978-8501014863", "O estrangeiro", 1979, 9, 3),
-("978-6559790111", "Medeia", 2021, 5, 2),
-("978-8551307915", "Eneida", 2022, 26, 1),
-("978-8525413147", "Noite de Reis", 2004, 8, 10),
-("978-8528618327", "Adeus às armas", 2013, 10, 11),
-("978-6555980998", "Coração das Trevas", 2021, 11, 12),
-("978-8525056009", "Admirável mundo novo", 2014, 12, 13),
-("978-8582850572", "Mrs. Dalloway", 2017, 1, 14),
-("978-8573267389", "Moby Dick", 2019, 2, 16),
-("978-8535930030", "Histórias extraordinárias", 2017, 4, 26),
-("978-8525053121", "A Comédia Humana", 2012, 12, 3),
-("978-8563560476", "Grandes Esperanças", 2012, 1, 16),
-("978-6556403571", "O Homem sem Qualidades", 2021, 3, 3),
-("978-6584952102", "Viagens de Gulliver", 2023, 5, 17),
-("978-8573215755", "Finnegans Wake", 2018, 14, 18),
-("978-8520942956", "Os Lusíadas", 2020, 3, 19),
-("978-8537802786", "Os três mosqueteiros", 2010, 5, 4),
-("978-8535929607", "Esperando Godot", 2017, 4, 2),
-("978-8535914849", "1984", 2009, 4, 13),
-("978-8573212310", "Os Cantos de Maldoror", 2018, 14, 6),
-("978-8578230838", "A Tarde de um Fauno", 2017, 15, 6),
-("978-8579620560", "Lolita", 2011, 16, 3),
-("978-6557110584", "Tartufo", 2022, 17, 10),
-("978-8588069053", "As três irmâs", 2004, 18, 21),
-("978-6558302032", "Mil e uma noites", 2023, 12, 26);
+insert into livro (isbn, titulo, ano_publicacao, id_editora, id_genero, capa) values 
+("978-8563560568", "Ilíada", 2013, 1, 1, "iliada.jpg"),
+("978-8563560278", "Odisseia", 2011, 1, 1, "odisseia.jpg"),
+("978-8582850145", "Hamlet", 2015, 1, 2, "hamlet.jpg"),
+("978-8563560551", "Dom Quixote", 2012, 1, 15, "dom-quixote.jpg"),
+("978-8573261202", "A Divina Comédia", 2017, 2, 6, "divina-comedia.jpg"),
+("978-8520926505", "Em Busca do Tempo Perdido", 2017, 3, 3, "em-busca-do-tempo-perdido.jpg"),
+("978-8563560421", "Ulysses", 2012, 1, 3, "ulysses.jpg"),
+("978-8535930047", "Guerra e paz", 2017, 4, 4, "guerra-e-paz.jpg"),
+("978-8573266467", "Crime e castigo", 2016, 2, 14, "crime-e-castigo.jpg"),
+("978-8563560063", "Os ensaios", 2010, 1, 5, "os-ensaios.jpg"),
+("978-8537817360", "Édipo Rei", 2018, 5, 2, "edipo-rei.jpg"),
+("978-8582850459", "Otelo", 2017, 1, 2, "otelo.jpg"),
+("978-8563560315", "Madame Bovary", 2011, 1, 3, "madame-bovary.jpg"),
+("978-6555250442", "Fausto", 2023, 2, 2, "fausto.jpg"),
+("978-8535907438", "O processo", 2005, 6, 13, "o-processo.jpg"),
+("978-8535926484", "Doutor Fausto", 2015, 4, 27, "doutor-fausto.jpg"),
+("978-8582850930", "As flores do mal", 2019, 1, 6, "as-flores-do-mal.jpg"),
+("978-8535929423", "O Som e a Fúria", 2017, 4, 3, "o-som-e-a-furia.jpg"),
+("978-8535931785", "A terra devastada", 2018, 4, 7, "terra-devastada.jpg"),
+("978-6589705581", "Teogonia", 2022, 7, 1, "teogonia.jpg"),
+("978-8582851784", "Metamorfoses", 2023, 1, 6, "metamorfoses.jpg"),
+("978-8582850725", "O Vermelho e o Negro", 2018, 1, 14, "o-vermelho-e-o-negro.jpg"),
+("978-8563560292", "O Grande Gatsby", 2011, 1, 3, "o-grande-gatsby.jpg"),
+("978-8525406712", "Uma Temporada no Inferno", 2006, 8, 6, "uma-temporada-no-inferno.jpg"),
+("978-8582850480", "Os miseráveis", 2017, 1, 3, "os-miseraveis.jpg"),
+("978-8501014863", "O estrangeiro", 1979, 9, 3, "o-estrangeiro.jpg"),
+("978-6559790111", "Medeia", 2021, 5, 2, "medeia.jpg"),
+("978-8551307915", "Eneida", 2022, 26, 1, "eneida.jpg"),
+("978-8525413147", "Noite de Reis", 2004, 8, 10, "noite-de-reis.jpg"),
+("978-8528618327", "Adeus às armas", 2013, 10, 11, "adeus-as-armas.jpg"),
+("978-6555980998", "Coração das Trevas", 2021, 11, 12, "coracao-das-trevas.jpg"),
+("978-8525056009", "Admirável mundo novo", 2014, 12, 13, "admiravel-mundo-novo.jpg"),
+("978-8582850572", "Mrs. Dalloway", 2017, 1, 14, "mrs-dalloway.jpg"),
+("978-8573267389", "Moby Dick", 2019, 2, 16, "moby-dick.jpg"),
+("978-8535930030", "Histórias extraordinárias", 2017, 4, 26, "historias-extraordinarias.jpg"),
+("978-8525053121", "A Comédia Humana", 2012, 12, 3, "comedia-humana.jpg"),
+("978-8563560476", "Grandes Esperanças", 2012, 1, 16, "grandes-esperancas.jpg"),
+("978-6556403571", "O Homem sem Qualidades", 2021, 3, 3, "o-homem-sem-qualidades.jpg"),
+("978-6584952102", "Viagens de Gulliver", 2023, 5, 17, "viagens-de-gulliver.jpg"),
+("978-8573215755", "Finnegans Wake", 2018, 14, 18, "finnegans-wake.jpg"),
+("978-8520942956", "Os Lusíadas", 2020, 3, 19, "os-lusiadas.jpg"),
+("978-8537802786", "Os três mosqueteiros", 2010, 5, 4, "os-tres-mosqueteiros.jpg"),
+("978-8535929607", "Esperando Godot", 2017, 4, 2, "esperando-godot.jpg"),
+("978-8535914849", "1984", 2009, 4, 13, "1984.jpg"),
+("978-8573212310", "Os Cantos de Maldoror", 2018, 14, 6, "os-cantos-de-maldoror.jpg"),
+("978-8578230838", "A Tarde de um Fauno", 2017, 15, 6, "a-tarde-de-um-fauno.jpg"),
+("978-8579620560", "Lolita", 2011, 16, 3, "lolita.jpg"),
+("978-6557110584", "Tartufo", 2022, 17, 10, "tartufo.jpg"),
+("978-8588069053", "As três irmâs", 2004, 18, 21, "as-tres-irmas.jpg"),
+("978-6558302032", "Mil e uma noites", 2023, 12, 26, "mil-e-uma-noites.jpg");
 
 
 # LIVRO_AUTOR
@@ -355,15 +356,15 @@ insert into livro_autor (id_autor, id_livro) values
 
 # ADMIN (teste) senha: senhaADM1234
 insert into administrador (cpf, nome, email, senha) values 
-("55055055099", "Paulo Costa", "emailtesteadmin@gmail.com", "1a37203cbae0da492b357337f2b4f518");
+("55055055099", "Paulo Costa", "emailtesteadmin@gmail.com", "980a6edb7c2aedad638b8091bbb4c37b3a9f9d943ce44de96af17400b2419332");
 
 
 # FUNCIONARIO (teste) senha: senhaFUNC1234
 insert into funcionario (cpf, nome, email, senha) values 
-("45045045088", "João Gomes", "emailtestefuncionario@gmail.com", "bf0acf7516322a333e98690760bdddf");
+("45045045088", "João Gomes", "emailtestefuncionario@gmail.com", "89e08d745d3a79b648abfb66bf9bb9cfc8e88c2cbc54245f5bbf81017d5ebb94");
 
 
 # USUARIO (teste) senha: senhaUSER1234
 insert into usuario (cpf, nome, email, senha) values 
-("35035035077", "Miguel Torres", "emailtesteuser@gmail.com", "f4f0638da50f84fc15d6ca450ede5b9f");
+("35035035077", "Miguel Torres", "emailtesteuser@gmail.com", "8751687b2aebac992d2669bba14af112647a70087be7d97b47bc95e169fe3da5");
 

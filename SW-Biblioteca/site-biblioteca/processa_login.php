@@ -3,7 +3,7 @@ session_start();
 require('conexao.php');
 
 $email_login = $_POST['email_login'];
-$senha_login = md5($_POST['senha_login']); // Criptografia da senha
+$senha_login = hash('sha256', md5($_POST['senha_login'])); // Criptografia da senha
 
 $consulta_usuario = "SELECT * FROM usuario WHERE email = '$email_login' AND senha = '$senha_login'";
 $resultado_usuario = $conexao->query($consulta_usuario);
@@ -19,8 +19,6 @@ if ($resultado_usuario && $resultado_usuario->num_rows == 1) {
 
 $consulta_funcionario = "SELECT * FROM funcionario WHERE email = '$email_login' AND senha = '$senha_login'";
 $resultado_funcionario = $conexao->query($consulta_funcionario);
-
-echo var_dump(md5($_POST['senha_login']));
 
 if ($resultado_funcionario && $resultado_funcionario->num_rows == 1) {
     $resultado_funcionario_dados = $resultado_funcionario->fetch_assoc();

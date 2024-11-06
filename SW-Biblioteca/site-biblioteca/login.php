@@ -42,6 +42,43 @@ if (isset($_SESSION['id_usuario'])) {
             background-image: url('img/biblioteca_leonardo.jpg');
             background-repeat: no-repeat;
             background-size: cover;
+            padding-top: 7%;
+        }
+        #contact .container-sm {
+            background-color: rgba(255, 255, 255, 0.86);
+            border-radius: 15px;
+            padding: 2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+        }
+        #contact h2 {
+            color: #333;
+            font-weight: 700;
+        }
+        #contact p.lead {
+            color: #666;
+        }
+        #contact input[type="email"],
+        #contact input[type="password"] {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 0.75em;
+            font-size: 1em;
+        }
+        #contact input[type="submit"] {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.75em;
+            font-weight: bold;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1em;
+        }
+        #contact input[type="submit"]:hover {
+            background-color: #e03370;
         }
     </style>
 </head>
@@ -49,7 +86,7 @@ if (isset($_SESSION['id_usuario'])) {
 <body id="page-top" style="height: 100vh;">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container px-5" style="z-index: 10; position: relative">
             <a class="navbar-brand" href="index.html">Biblioteca Online</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
@@ -68,7 +105,7 @@ if (isset($_SESSION['id_usuario'])) {
 
     <!-- Login Section -->
     <section id="contact" style="display: flex; align-items: center; justify-content: center; height: 100%;">
-        <div class="container-sm col-lg-5" style="border: 1px solid black; border-radius: 1em; padding-top: 2em;background-color: white;">
+        <div class="container-sm col-lg-5" style="border: 1px solid black; border-radius: 1em; padding-top: 2em;">
             <div class="row text-center">
                 <h2>Login</h2>
                 <p class="lead">Preencha os dados</p>

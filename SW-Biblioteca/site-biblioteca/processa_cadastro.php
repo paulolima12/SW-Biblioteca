@@ -6,7 +6,7 @@ require('conexao.php');
 $cpf_cadastro = $_POST['cpf_cadastro'];
 $nome_cadastro = $_POST['nome_cadastro'];
 $email_cadastro = $_POST['email_cadastro'];
-$senha_cadastro = md5($_POST['senha_cadastro']); // Criptografar a senha
+$senha_cadastro = hash('sha256', md5($_POST['senha_cadastro'])); // Criptografar a senha
 
 // Verificar se o email OU o CPF já existem no banco de dados
 $sql_verifica = "SELECT * FROM usuario WHERE email = '$email_cadastro' OR cpf = '$cpf_cadastro'";

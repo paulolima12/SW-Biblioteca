@@ -1,4 +1,6 @@
 <?php
+<link href="css/styles.css" rel="stylesheet" />
+
     session_start();
 
     if((!isset($_SESSION['id_adm']) == true) && (!isset($_SESSION['nome']) == true) && (!isset($_SESSION['email'])) == true){

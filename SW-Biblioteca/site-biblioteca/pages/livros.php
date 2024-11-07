@@ -12,6 +12,7 @@ if ((!isset($_SESSION['id_usuario']) == true) && (!isset($_SESSION['nome']) == t
 
 include '../conexao.php';
 
+// Condições ternárias (tipo if e else só que mais compactado)
 $pesquisa_titulo = isset($_POST['pesquisa_titulo']) ? $_POST['pesquisa_titulo'] : '';
 $pesquisa_autor = isset($_POST['pesquisa_autor']) ? $_POST['pesquisa_autor'] : '';
 $pesquisa_genero = isset($_POST['pesquisa_genero']) ? $_POST['pesquisa_genero'] : '';
@@ -58,7 +59,7 @@ $consulta = $conexao->query($sql);
     <meta name="description" content="Biblioteca Online - Seu Acesso ao Conhecimento" />
     <meta name="author" content="Biblioteca Online" />
     <title>Biblioteca Online</title>
-    <link rel="icon" type="image/x-icon" href="img/FAVICON.png" />
+    <link rel="icon" type="image/x-icon" href="../img/FAVICON.png" />
 
     <!-- Font Awesome icons (free version) -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -136,7 +137,7 @@ $consulta = $conexao->query($sql);
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container px-5">
-            <a class="navbar-brand" href="#">Biblioteca Online</a>
+            <a class="navbar-brand" href="../index.html">Biblioteca Online</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -152,7 +153,7 @@ $consulta = $conexao->query($sql);
     </nav>
 
     <section id="filtro-livros" class="py-4 container">
-        <div class="container">
+        <div id="#container-filtragem" class="container">
             <form method="GET" action="livros.php">
                 <div class="row">
                     <!-- pesquisa por título -->
@@ -212,7 +213,7 @@ $consulta = $conexao->query($sql);
     </section>
 
     <section id="livros">
-        <div class="container">
+        <div class="container py-5" id="container-livros">
             <div class="row">
                 <?php
                 // Consulta que engloba todos os dados utilizados na exibição de livro
@@ -249,38 +250,34 @@ $consulta = $conexao->query($sql);
                 $consulta = $conexao->query($sql);
                 ?>
 
-                <section id="livros" class="py-5">
-                    <div class="container">
-                        <div class="row">
-                            <?php while ($dados = $consulta->fetch_assoc()) { ?>
-                                <div class="col-lg-2 col-md-4 col-sm-6">
-                                    <a href="livro_selecionado.php?id_livro=<?= $dados['id_livro'] ?>"
-                                        class="text-decoration-none">
-                                        <div class="card mb-4" id="links-livro">
-                                            <img id="capa-livro" src="capa_livro/<?= $dados['capa'] ?>" class="card-img-top"
-                                                alt="Capa do livro">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><?= $dados['titulo'] ?></h5>
-                                                <p class="card-text"><?= $dados['autor'] ?></p>
-                                            </div>
-                                        </div>
-                                    </a>
+                <?php while ($dados = $consulta->fetch_assoc()) { ?>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <a href="livro_selecionado.php?id_livro=<?= $dados['id_livro'] ?>" class="text-decoration-none">
+                            <div class="card mb-4" id="links-livro">
+                                <img id="capa-livro" src="capa_livro/<?= $dados['capa'] ?>" class="card-img-top"
+                                    alt="Capa do livro">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $dados['titulo'] ?></h5>
+                                    <p class="card-text"><?= $dados['autor'] ?></p>
                                 </div>
-                            <?php } ?>
-                        </div>
+                            </div>
+                        </a>
                     </div>
-                </section>
+                <?php } ?>
+            </div>
+        </div>
+    </section>
 
-                <footer class="footer py-3 bg-black">
-                    <div class="container px-5">
-                        <p class="m-0 text-center text-white small">Copyright &copy; Biblioteca Online 2024 </p>
-                    </div>
-                </footer>
+    <footer class="footer py-3 bg-black">
+        <div class="container px-5">
+            <p class="m-0 text-center text-white small">Copyright &copy; Biblioteca Online 2024 </p>
+        </div>
+    </footer>
 
-                <!-- Bootstrap core JS -->
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-                <!-- Core theme JS -->
-                <script src="js/scripts.js"></script>
+    <!-- Bootstrap core JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS -->
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>

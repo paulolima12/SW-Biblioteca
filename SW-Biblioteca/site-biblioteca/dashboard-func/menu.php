@@ -25,6 +25,7 @@ if ((!isset($_SESSION['id_funcionario']) == true) && (!isset($_SESSION['nome']) 
     <title>Biblioteca Online</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="../img/FAVICON.png" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900"
         rel="stylesheet" />
@@ -89,7 +90,7 @@ if ((!isset($_SESSION['id_funcionario']) == true) && (!isset($_SESSION['nome']) 
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Painel de empréstimos
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index_usuarios.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Painel de usuários
                         </a>
@@ -104,7 +105,7 @@ if ((!isset($_SESSION['id_funcionario']) == true) && (!isset($_SESSION['nome']) 
                         </a>
                         <a class="nav-link" href="#">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Bloquear/Desbloquear usuários
+                            Gerenciar usuários
                         </a>
                     </div>
                 </div>

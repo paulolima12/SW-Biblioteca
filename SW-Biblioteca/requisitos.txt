@@ -1,0 +1,9 @@
+Dashboard-func:
+-Falta gerenciamento de empréstimos;
+
+Dashboard-admin:
+-Falta gerenciamento/cadastro de funcionarios;
+-Falta estilização;
+
+Pages(usuario):
+-Falta gerenciamento/pag de emprestimos

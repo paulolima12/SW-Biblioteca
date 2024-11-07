@@ -18,7 +18,7 @@ include 'menu.php';
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4" style="font-weight: 600;">Gerenciamento de biblioteca</h1>
+            <h1 class="mt-4" style="font-weight: 600;">Gerenciamento de livros</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Dashboard de funcionário</li>
             </ol>

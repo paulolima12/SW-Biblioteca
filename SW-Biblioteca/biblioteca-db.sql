@@ -1,4 +1,4 @@
-CREATE DATABASE biblioteca;
+CREATE DATABASE biblioteca DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE biblioteca;
 
 CREATE TABLE editora (
@@ -75,7 +75,6 @@ CREATE TABLE livro_autor (
     FOREIGN KEY (id_autor) REFERENCES autor(id_autor),
     FOREIGN KEY (id_livro) REFERENCES livro(id_livro)
 );
-
 
 # INSERTS
 # Link dos livros: https://resenhasalacarte.com.br/listas/100-livros-essenciais-literatura-mundial/

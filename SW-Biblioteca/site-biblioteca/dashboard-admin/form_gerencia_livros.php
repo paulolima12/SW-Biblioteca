@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if ((!isset($_SESSION['id_funcionario']) == true) && (!isset($_SESSION['nome']) == true) && (!isset($_SESSION['email'])) == true) {
+if ((!isset($_SESSION['id_adm']) == true) && (!isset($_SESSION['nome']) == true) && (!isset($_SESSION['email'])) == true) {
 
-    unset($_SESSION['id_funcionario']);
+    unset($_SESSION['id_adm']);
     unset($_SESSION['nome']);
     unset($_SESSION['email']);
 

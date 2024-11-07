@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 if ((!isset($_SESSION['id_adm']) == true) && (!isset($_SESSION['nome']) == true) && (!isset($_SESSION['email'])) == true) {
 
     unset($_SESSION['id']);

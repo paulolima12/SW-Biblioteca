@@ -8,6 +8,7 @@ Integrantes:
 -Nicolas Augusto
 
 (Se der erro no login verifique no script do banco de dados)
+
 Email e senha do administrador:
 email: emailtesteadmin@gmail.com
 senha: senhaADM1234

@@ -150,9 +150,9 @@ include '../conexao.php';
                 ?>
 
                 <?php while ($dados = $consulta->fetch_assoc()) { ?>
-                    <div class="col-md-4 mb-4 text-decoration-none" style="width: 100%">
+                    <div class="col-md-4 mb-4 text-decoration-none" style="width: 100%;">
                         <div class="card">
-                            <div class="card-body px-4">
+                            <div class="card-body">
                                 <div>
                                     <h5 class="card-title"> <?= $dados['livro'] ?></h5>
                                 </div>
@@ -165,15 +165,17 @@ include '../conexao.php';
                                         <?= $dados['status'] ?></p>
                                 </div>
                                 <div>
-                                    <a href="gerencia_emprestimo.php?id_emprestimo=<?php echo $dados['id_emprestimo']; ?>&id_usuario=<?php echo $dados['id_usuario']; ?>">
+                                    <a
+                                        href="gerencia_emprestimo.php?id_emprestimo=<?php echo $dados['id_emprestimo']; ?>&id_usuario=<?php echo $dados['id_usuario']; ?>">
                                         <button class="btn-gerenciar">Gerenciar</button>
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <?php } ?>
+
+                <?php } ?>
+            </div>
         </div>
         </div>
     </section>

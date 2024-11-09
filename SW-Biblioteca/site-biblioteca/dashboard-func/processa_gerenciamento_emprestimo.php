@@ -6,7 +6,7 @@ require('../conexao.php');
 $id_emprestimo = $_POST['id_emprestimo'];
 $acao = $_POST['acao'];
 
-$sql = "SELECT `status`, status_devolucao, id_livro FROM emprestimo WHERE id_emprestimo = $id_emprestimo";
+$sql = "SELECT `status`, status_devolucao, id_livro, id_usuario FROM emprestimo WHERE id_emprestimo = $id_emprestimo";
 $resultado = $conexao->query($sql);
 $dados = $resultado->fetch_assoc();
 
@@ -17,7 +17,7 @@ if ($acao == 'aceitar_devolucao' && $dados['status_devolucao'] === 'pendente') {
     echo "<script>alert('Devolução confirmada e empréstimo concluído.');</script>";
 } elseif ($acao == 'rejeitar_devolucao' && $dados['status_devolucao'] === 'pendente') {
     $sql = "UPDATE emprestimo SET status_devolucao = 'atrasada', status = 'em andamento' WHERE id_emprestimo = $id_emprestimo;
-            UPDATE usuario SET status = 'bloqueado' WHERE id_usuario = {$dados['id_usuario']}";
+            UPDATE usuario SET `status` = 'bloqueado' WHERE id_usuario = {$dados['id_usuario']}";
     $conexao->multi_query($sql);
     echo "<script>alert('Devolução rejeitada e usuário bloqueado.');</script>";
 } else if ($acao == 'aceitar_devolucao_atrasada' && $dados['status_devolucao'] === 'atrasada') {

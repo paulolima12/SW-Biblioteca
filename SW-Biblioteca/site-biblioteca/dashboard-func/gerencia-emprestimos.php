@@ -4,11 +4,9 @@ session_start();
 include '../conexao.php';
 
 if ((!isset($_SESSION['id_funcionario']) == true) && (!isset($_SESSION['nome']) == true) && (!isset($_SESSION['email'])) == true) {
-
     unset($_SESSION['id_funcionario']);
     unset($_SESSION['nome']);
     unset($_SESSION['email']);
-
     header('Location: ../index.html');
     exit();
 }
@@ -26,7 +24,7 @@ if ($_SESSION['id_funcionario'] != $id_funcionario) {
     exit();
 }
 
-$sql = "SELECT emprestimo.*, livro.titulo AS titulo_livro, usuario.nome AS nome_usuario
+$sql = "SELECT emprestimo.*, livro.titulo AS titulo_livro, usuario.nome AS nome_usuario, usuario.id_usuario
         FROM emprestimo
         JOIN livro ON emprestimo.id_livro = livro.id_livro
         JOIN usuario ON emprestimo.id_usuario = usuario.id_usuario
@@ -39,8 +37,22 @@ if (!$dados_emprestimo) {
     exit();
 }
 
-include 'menu.php';
+$data_devolucao = new DateTime($dados_emprestimo['data_devolucao']);
+$data_atual = new DateTime();
 
+if ($data_devolucao < $data_atual && $dados_emprestimo['status_devolucao'] != 'atrasada') {
+    $atualizar_status = "UPDATE emprestimo SET status_devolucao = 'atrasada', `status` = 'em andamento' WHERE id_emprestimo = $id_emprestimo";
+    $conexao->query($atualizar_status);
+
+    $bloquear_usuario = "UPDATE usuario SET `status` = 'bloqueado' WHERE id_usuario = " . $dados_emprestimo['id_usuario'];
+    $conexao->query($bloquear_usuario);
+
+    // Recarregar os dados do empréstimo com as atualizações
+    $resultado = $conexao->query($sql);
+    $dados_emprestimo = $resultado->fetch_assoc();
+}
+
+include 'menu.php';
 ?>
 
 <div id="layoutSidenav_content">
@@ -50,11 +62,14 @@ include 'menu.php';
             <ol class="breadcrumb mb-4">
                 <li id="dataAtual" class="breadcrumb-item active"></li>
             </ol>
-            <div class="card mb-4" style="padding: 15px; box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <div class="card mb-4"
+                style="padding: 15px; box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                 <p><strong>Livro:</strong> <?= htmlspecialchars($dados_emprestimo['titulo_livro']); ?></p>
                 <p><strong>Usuário:</strong> <?= htmlspecialchars($dados_emprestimo['nome_usuario']); ?></p>
-                <p><strong>Data de empréstimo:</strong> <?= date("d/m/Y", strtotime($dados_emprestimo['data_emprestimo'])); ?></p>
-                <p><strong>Data de devolução:</strong> <?= date("d/m/Y", strtotime($dados_emprestimo['data_devolucao'])); ?></p>
+                <p><strong>Data de empréstimo:</strong>
+                    <?= date("d/m/Y", strtotime($dados_emprestimo['data_emprestimo'])); ?></p>
+                <p><strong>Data de devolução:</strong>
+                    <?= date("d/m/Y", strtotime($dados_emprestimo['data_devolucao'])); ?></p>
                 <p><strong>Status do empréstimo:</strong> <?= $dados_emprestimo['status']; ?></p>
                 <p><strong>Status de devolução:</strong> <?= $dados_emprestimo['status_devolucao']; ?></p>
             </div>
@@ -62,18 +77,22 @@ include 'menu.php';
             <?php
 
             echo "<form action='processa_gerenciamento_emprestimo.php' method='POST'>
-                    <input type='hidden' name='id_emprestimo' value='". $id_emprestimo . "'>";
+                    <input type='hidden' name='id_emprestimo' value='" . $id_emprestimo . "'>";
 
-            if ($dados_emprestimo['status_devolucao'] == 'pendente') {
-                echo "<button style='margin-top: 10px;' type='submit' name='acao' value='aceitar_devolucao'>Aceitar devolução</button>
-                        <button type='submit' name='acao' value='rejeitar_devolucao'>Rejeitar devolução</button>";
-            } else if ($dados_emprestimo['status_devolucao'] == 'atrasada') {
-                echo "<h5 style='margin-top: 10px;' >O empréstimo está atrasado. O usuário está bloqueado e o livro indisponível até você aceitar a devolução.</h5>
-                        <button style='margin-top: 10px;' type='submit' name='acao' value='aceitar_devolucao_atrasada'>Aceitar devolução</button>";
+            if ($dados_emprestimo['status'] == 'rejeitado') {
+                echo "<h5 style='margin-top: 10px;' >O empréstimo foi rejeitado. Nenhuma ação disponível.</h5>";
             } else if ($dados_emprestimo['status'] == 'concluído') {
                 echo "<h5 style='margin-top: 10px;' >O empréstimo foi concluído. Nenhuma ação disponível.</h5>";
+            } else if ($dados_emprestimo['status_devolucao'] == 'pendente') {
+                echo "<button style='margin-top: 10px; background-color: #ee0979; border: none; border-radius: 5px; padding: 5px;' type='submit' name='acao' value='aceitar_devolucao'>Aceitar devolução</button>
+                        <button style='margin-top: 10px; background-color: #ee0979; border: none; border-radius: 5px; padding: 5px;' type='submit' name='acao' value='rejeitar_devolucao'>Rejeitar devolução</button>";
+            } else if ($dados_emprestimo['status_devolucao'] == 'atrasada') {
+                echo "<h5 style='margin-top: 10px;'>O empréstimo está atrasado. O usuário está bloqueado e o livro indisponível até você aceitar a devolução.</h5>
+                    <button style='margin-top: 10px; background-color: #ee0979; border: none; border-radius: 5px; padding: 5px;' type='submit' name='acao' value='aceitar_devolucao_atrasada'>Aceitar devolução novamente</button>";
             } else if ($dados_emprestimo['status_devolucao'] == 'aguardando confirmação') {
                 echo "<h5 style='margin-top: 10px;'>O usuário ainda não confirmou devolução. Nenhuma ação disponível.</h5>";
+            } else if ($dados_emprestimo['status'] == 'rejeitado') {
+                echo "<h5 style='margin-top: 10px;' >O empréstimo foi rejeitado. Nenhuma ação disponível.</h5>";
             }
 
             ?>

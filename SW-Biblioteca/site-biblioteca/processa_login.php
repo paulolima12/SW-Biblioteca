@@ -13,6 +13,7 @@ if ($resultado_usuario && $resultado_usuario->num_rows == 1) {
     $_SESSION['id_usuario'] = $resultado_usuario_dados['id_usuario'];
     $_SESSION['nome'] = $resultado_usuario_dados['nome'];
     $_SESSION['email'] = $resultado_usuario_dados['email'];
+    $_SESSION['status'] = $resultado_usuario_dados['status'];
     header('Location: pages/livros.php');
     exit();
 }

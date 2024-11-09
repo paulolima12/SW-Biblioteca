@@ -3,11 +3,12 @@
 session_start();
 include '../conexao.php';
 
-if ((!isset($_SESSION['id_usuario']) == true) && (!isset($_SESSION['nome']) == true) && (!isset($_SESSION['email'])) == true) {
+if ((!isset($_SESSION['id_usuario']) == true) && (!isset($_SESSION['nome']) == true) && (!isset($_SESSION['email']) == true)) {
     unset($_SESSION['id_usuario']);
     unset($_SESSION['nome']);
     unset($_SESSION['email']);
     header('Location: ../index.html');
+    exit();
 }
 
 $id_usuario = $_SESSION['id_usuario'];
@@ -17,7 +18,15 @@ $data_emprestimo = $_POST['data_emprestimo'];
 $data_devolucao = $_POST['data_devolucao'];
 
 if ($status == 'bloqueado') {
-    echo "<script>alert('Você está bloqueado, verifique a devolução de seus empréstimos e tente novamente.'); window.location.href='livros.php';</script>";
+    echo "<script>alert('Você está bloqueado, verifique a devolução de seus empréstimos e tente novamente. Caso isso não resolva, deslogue e logue novamente.'); window.location.href='livros.php';</script>";
+    exit();
+}
+
+$sql_verifica = "SELECT * FROM emprestimo WHERE id_usuario = $id_usuario AND `status` != 'concluído' AND `status` != 'rejeitado'";
+$resultado_verifica = $conexao->query($sql_verifica);
+
+if ($resultado_verifica->num_rows > 0) {
+    echo "<script>alert('Você já possui um empréstimo ativo ou em solicitação. Por favor, conclua ou devolva o livro antes de solicitar um novo empréstimo.'); window.location.href='livros.php';</script>";
     exit();
 }
 
@@ -29,3 +38,4 @@ if ($conexao->query($sql) === TRUE) {
 } else {
     echo "<script>alert('Erro ao solicitar o empréstimo. Tente novamente.'); window.location.href='livro_selecionado.php?id_livro=$id_livro';</script>";
 }
+

@@ -135,13 +135,15 @@ if (!$dados_emprestimo) {
                 echo "<h5 style='margin-top: 10px;'>Seu empréstimo foi rejeitado pelo funcionário. Nenhuma ação disponível.</h5>";
             } else if ($dados_emprestimo['status_devolucao'] == 'aguardando confirmação') {
                 echo "<button onclick='return confirmDevolucao()' style='margin-top: 10px; background-color: #ee0979; color: white; border: none;' type='submit' name='acao' value='confirmar_devolucao'>Confirmar devolução</button>";
-            } else if ($dados_emprestimo['status_devolucao'] == 'atrasada') {
+            } else if ($dados_emprestimo['status_devolucao'] == 'atrasada' && $dados_emprestimo['status'] == 'atrasado') {
                 echo "<h5 style='margin-top: 10px;'>O empréstimo está atrasado. Você permanecerá bloqueado até que o funcionário confirme sua devolução.</h5>
                         <button onclick='return confirmDevolucao()' style='margin-top: 10px; background-color: #ee0979; color: white; border: none;' type='submit' name='acao' value='confirmar_devolucao'>Confirmar devolução</button>";
+            } else if ($dados_emprestimo['status'] == 'atrasado' && $dados_emprestimo['status_devolucao'] == 'pendente') {
+                echo "<h5 style='margin-top: 10px;'>Você ainda está bloqueado e o empréstimo está atrasado. Você permanecerá bloqueado até que o funcionário confirme sua devolução.</h5>";
+            } else if ($dados_emprestimo['status_devolucao'] == 'pendente' && $dados_emprestimo['status'] == 'em andamento') {
+                echo "<h5 style='margin-top: 10px;'>Aguarde o funcionário confirmar sua devolução. Nenhuma ação disponível.</h5>";
             } else if ($dados_emprestimo['status'] == 'concluído') {
                 echo "<h5 style='margin-top: 10px;'>O empréstimo foi concluído. Nenhuma ação disponível.</h5>";
-            } else if ($dados_emprestimo['status_devolucao'] == 'pendente') {
-                echo "<h5 style='margin-top: 10px;'>Aguarde o funcionário confirmar sua devolução. Nenhuma ação disponível.</h5>";
             }
 
             ?>

@@ -83,12 +83,16 @@ include 'menu.php';
                 echo "<h5 style='margin-top: 10px;' >O empréstimo foi rejeitado. Nenhuma ação disponível.</h5>";
             } else if ($dados_emprestimo['status'] == 'concluído') {
                 echo "<h5 style='margin-top: 10px;' >O empréstimo foi concluído. Nenhuma ação disponível.</h5>";
+            } else if ($dados_emprestimo['status_devolucao'] == 'pendente' && $dados_emprestimo['status'] == 'atrasado') {
+                echo "<h5 style='margin-top: 10px;'>O usuário bloqueado confirmou a devolução novamente. Rejeite ou aceite a devolução.</h5>
+                    <button onclick='return confirmBasico()' style='margin-top: 10px; background-color: #ee0979; border: none; border-radius: 5px; padding: 5px;' type='submit' name='acao' value='aceitar_devolucao_atrasada'>Aceitar devolução</button>
+                    <button onclick='return confirmBasico()' style='margin-top: 10px; background-color: #ee0979; border: none; border-radius: 5px; padding: 5px;' type='submit' name='acao' value='rejeitar_devolucao'>Rejeitar devolução</button>";
             } else if ($dados_emprestimo['status_devolucao'] == 'pendente') {
-                echo "<button style='margin-top: 10px; background-color: #ee0979; border: none; border-radius: 5px; padding: 5px;' type='submit' name='acao' value='aceitar_devolucao'>Aceitar devolução</button>
-                        <button style='margin-top: 10px; background-color: #ee0979; border: none; border-radius: 5px; padding: 5px;' type='submit' name='acao' value='rejeitar_devolucao'>Rejeitar devolução</button>";
-            } else if ($dados_emprestimo['status_devolucao'] == 'atrasada') {
-                echo "<h5 style='margin-top: 10px;'>O empréstimo está atrasado. O usuário está bloqueado e o livro indisponível até você aceitar a devolução.</h5>
-                    <button style='margin-top: 10px; background-color: #ee0979; border: none; border-radius: 5px; padding: 5px;' type='submit' name='acao' value='aceitar_devolucao_atrasada'>Aceitar devolução novamente</button>";
+                echo "<h5 style='margin-top: 10px;'>O usuário confirmou a devolução. Rejeite ou aceite a devolução.</h5>
+                    <button onclick='return confirmBasico()' style='margin-top: 10px; background-color: #ee0979; border: none; border-radius: 5px; padding: 5px;' type='submit' name='acao' value='aceitar_devolucao'>Aceitar devolução</button>
+                    <button onclick='return confirmBasico()' style='margin-top: 10px; background-color: #ee0979; border: none; border-radius: 5px; padding: 5px;' type='submit' name='acao' value='rejeitar_devolucao'>Rejeitar devolução</button>";
+            } else if ($dados_emprestimo['status_devolucao'] == 'atrasada' && $dados_emprestimo['status'] == 'atrasado') {
+                echo "<h5 style='margin-top: 10px;'>O empréstimo está atrasado. O usuário está bloqueado e o livro indisponível até você aceitar a devolução. O usuário ainda não confirmou a devolução novamente.</h5>";
             } else if ($dados_emprestimo['status_devolucao'] == 'aguardando confirmação') {
                 echo "<h5 style='margin-top: 10px;'>O usuário ainda não confirmou devolução. Nenhuma ação disponível.</h5>";
             } else if ($dados_emprestimo['status'] == 'rejeitado') {
@@ -137,6 +141,9 @@ include 'menu.php';
 </script>
 
 <script>
+    function confirmBasico() {
+        return confirm("Você tem certeza que quer realizar esssa ação? Ela não pode ser desfeita.")
+    }
     function confirmDelete() {
         return confirm("Você tem certeza de que deseja deletar os dados?");
     }

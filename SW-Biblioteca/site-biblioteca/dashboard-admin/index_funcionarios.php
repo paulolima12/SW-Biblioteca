@@ -84,7 +84,7 @@ include 'menu.php';
                     <form id="bookForm" method="POST" action="inserir_funcionarios.php">
                         <div class="mb-3">
                             <label for="isbn" class="form-label">CPF</label>
-                            <input type="text" class="form-control" id="cpf" name="cpf" minlength="10" maxlength="10" required>
+                            <input type="text" class="form-control" id="cpf" name="cpf" minlength="11" maxlength="11" required>
                         </div>
                         <div class="mb-3">
                             <label for="titulo" class="form-label">Nome</label>

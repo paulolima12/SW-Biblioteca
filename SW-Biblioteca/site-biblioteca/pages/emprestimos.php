@@ -154,10 +154,10 @@ include '../conexao.php';
                         <div class="card">
                             <div class="card-body">
                                 <div>
-                                    <h5 class="card-title"> <?= $dados['livro'] ?></h5>
+                                    <h5 class="card-title" style="min-width: 250px;"> <?= $dados['livro'] ?></h5>
                                 </div>
                                 <div>
-                                    <p class="card-text"><strong>Data de devolução:</strong>
+                                    <p class="card-text" style="min-width: 200px;"><strong>Data de devolução:</strong>
                                         <?= date("d/m/Y", strtotime($dados['data_devolucao'])) ?></p>
                                 </div>
                                 <div>

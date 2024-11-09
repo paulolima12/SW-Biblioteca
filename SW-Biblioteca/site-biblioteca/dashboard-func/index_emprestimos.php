@@ -24,7 +24,7 @@ include 'menu.php';
                 <li class="breadcrumb-item active">Dashboard de funcionário</li>
             </ol>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">NOTA: Ao aprovar um empréstimo, você será responsável por ele e mais
+                <li class="breadcrumb-item active">NOTA: Ao aprovar um empréstimo, APENAS você será responsável por ele e mais
                     ninguém poderá gerenciá-lo.</li>
             </ol>
             <div class="card mb-4">

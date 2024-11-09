@@ -60,7 +60,7 @@ CREATE TABLE emprestimo (
     data_emprestimo date,
     data_devolucao date,
     status_devolucao ENUM('aguardando confirmação', 'pendente', 'confirmada', 'atrasada') DEFAULT 'aguardando confirmação',
-    status ENUM('solicitado', 'em andamento', 'concluído', 'rejeitado') DEFAULT 'solicitado',
+    status ENUM('solicitado', 'em andamento', 'concluído', 'rejeitado', 'atrasado') DEFAULT 'solicitado',
     id_livro int,
     id_funcionario int,
     id_usuario int,

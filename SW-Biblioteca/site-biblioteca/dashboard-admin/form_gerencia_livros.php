@@ -113,7 +113,7 @@ include 'menu.php';
                 <button style="margin-top: 1em;" type="reset" class="btn btn-secondary btn-sm">Resetar
                     alterações</button>
             </form>
-            <a <?php echo "href='apaga_livros.php?id_livro=" . $id_livro . "';" ?>><button style="margin-top: 1em;"
+            <a <?php echo "href='apaga_livros.php?id_livro=" . $dados['id_livro'] . "';" ?>><button style="margin-top: 1em;"
                     class="btn btn-danger btn-sm" name="delete" value="1" onclick="return confirmDelete()">Excluir
                     livro</button></a>
         </div>

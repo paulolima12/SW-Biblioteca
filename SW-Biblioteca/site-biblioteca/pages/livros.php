@@ -58,7 +58,6 @@ include '../conexao.php';
 
         .card {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border: none;
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 20px;

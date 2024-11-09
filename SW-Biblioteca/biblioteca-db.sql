@@ -42,7 +42,8 @@ CREATE TABLE funcionario (
     nome varchar(200),
     id_funcionario int AUTO_INCREMENT UNIQUE PRIMARY KEY,
     cpf varchar(11) UNIQUE,
-    senha varchar(100)
+    senha varchar(100),
+    status ENUM('ativo', 'inativo') DEFAULT 'ativo'
 );
 
 CREATE TABLE usuario (
@@ -58,8 +59,8 @@ CREATE TABLE emprestimo (
     id_emprestimo int AUTO_INCREMENT UNIQUE PRIMARY KEY,
     data_emprestimo date,
     data_devolucao date,
-    status_devolucao ENUM('pendente', 'confirmada', 'atrasada') DEFAULT 'pendente',
-    status ENUM('solicitado', 'aprovado', 'em andamento', 'concluído') DEFAULT 'solicitado',
+    status_devolucao ENUM('aguardando confirmação', 'pendente', 'confirmada', 'atrasada') DEFAULT 'aguardando confirmação',
+    status ENUM('solicitado', 'em andamento', 'concluído', 'rejeitado') DEFAULT 'solicitado',
     id_livro int,
     id_funcionario int,
     id_usuario int,
@@ -358,9 +359,10 @@ insert into administrador (cpf, nome, email, senha) values
 ("55055055099", "Paulo Costa", "emailtesteadmin@gmail.com", "980a6edb7c2aedad638b8091bbb4c37b3a9f9d943ce44de96af17400b2419332");
 
 
-# FUNCIONARIO (teste) senha: senhaFUNC1234
+# FUNCIONARIO (teste) senha João Gomes: senhaFUNC1234 e senha Cleber Rafael: senhaFUNCIO123
 insert into funcionario (cpf, nome, email, senha) values 
-("45045045088", "João Gomes", "emailtestefuncionario@gmail.com", "89e08d745d3a79b648abfb66bf9bb9cfc8e88c2cbc54245f5bbf81017d5ebb94");
+("45045045088", "João Gomes", "emailtestefuncionario@gmail.com", "89e08d745d3a79b648abfb66bf9bb9cfc8e88c2cbc54245f5bbf81017d5ebb94"),
+("45054045077", "Cléber Rafael", "emailfuncionarioteste@gmail.com", "ff24bd1a9dff2edeaed9fea1a491220cdc7458d73eb3c60499ee87191b36f5b5");
 
 
 # USUARIO (teste) senha: senhaUSER1234

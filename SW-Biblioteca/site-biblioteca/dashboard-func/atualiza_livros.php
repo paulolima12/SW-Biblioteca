@@ -13,6 +13,7 @@ if (isset($_POST['titulo']) && isset($_POST['isbn']) && isset($_POST['id_autor']
     $id_editora = $_POST['id_editora'];
     $id_genero = $_POST['id_genero'];
     $id_autor = $_POST['id_autor'];
+    $capa = $_POST['capa'];
 
     if ($isbn !== $isbn_atual) {
         $sql_verifica = "SELECT 1 FROM livro WHERE isbn = '$isbn' AND id_livro != '$id_livro'";
@@ -29,7 +30,8 @@ if (isset($_POST['titulo']) && isset($_POST['isbn']) && isset($_POST['id_autor']
                 titulo = '$titulo', 
                 ano_publicacao = '$ano_publicacao', 
                 id_editora = '$id_editora', 
-                id_genero = '$id_genero'
+                id_genero = '$id_genero',
+                capa = '$capa'
             WHERE id_livro = '$id_livro'";
 
     if ($conexao->query($sql) === TRUE) {

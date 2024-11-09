@@ -9,6 +9,7 @@ $ano_publicacao = $_POST['ano_publicacao'];
 $id_editora = $_POST['id_editora'];
 $id_genero = $_POST['id_genero'];
 $id_autor = $_POST['id_autores']; 
+$capa = $_POST['capa'];
 
 // Verificar se o ISBN já existe no banco 
 $sql_verifica = "SELECT * FROM livro WHERE isbn = '$isbn'";
@@ -20,8 +21,8 @@ if ($resultado_verifica->num_rows > 0) {
 }
 
 // Inserir o livro no banco de dados
-$sql = "INSERT INTO livro (isbn, titulo, ano_publicacao, id_editora, id_genero, status) 
-        VALUES ('$isbn', '$titulo', '$ano_publicacao', '$id_editora', '$id_genero', 'disponível')";
+$sql = "INSERT INTO livro (isbn, titulo, ano_publicacao, id_editora, id_genero, `status`, capa) 
+        VALUES ('$isbn', '$titulo', '$ano_publicacao', '$id_editora', '$id_genero', 'disponível', '$capa')";
 
 if ($conexao->query($sql) === TRUE) {
     $id_livro = $conexao->insert_id; // Pega o id do livro 

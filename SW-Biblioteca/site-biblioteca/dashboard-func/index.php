@@ -92,17 +92,24 @@ include 'menu.php';
                 <div class="modal-body">
                     <form id="bookForm" method="POST" action="inserir_livros.php">
                         <div class="mb-3">
-                            <label for="isbn" class="form-label">ISBN</label>
-                            <input type="text" class="form-control" id="isbn" name="isbn" name="isbn_atual" min="14" max="14" required>
+                            <label style="margin-bottom: 0" for="isbn" class="form-label">ISBN</label>
+                            <p style="font-size: smaller; color: #666666">Não se esqueça de colocar o "-" após o 3° caractere</p>
+                            <input type="text" class="form-control" id="isbn" name="isbn" name="isbn_atual" maxlength="14" minlength="14" placeholder="ex.: 987-65432101234" min="14" max="14" required>
                         </div>
                         <div class="mb-3">
                             <label for="titulo" class="form-label">Título</label>
-                            <input type="text" class="form-control" id="titulo" name="titulo" required>
+                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="ex.: Ilíada" required>
                         </div>
                         <div class="mb-3">
                             <label for="ano_publicacao" class="form-label">Ano de publicação</label>
-                            <input type="number" class="form-control" id="ano_publicacao" name="ano_publicacao"
+                            <input type="number" class="form-control" id="ano_publicacao" name="ano_publicacao" placeholder="ex.: 1980"
                                 min="1000" max="2024" minlength="4" maxlength="4" required>
+                        </div>
+                        <div class="mb-3">
+                            <label style="margin-bottom: 0" for="ano_publicacao" class="form-label">Arquivo da capa do livro</label>
+                            <p style="font-size: smaller; color: #666666">Certifique-se de ter a imagem salva no banco de dados</p>
+                            <input type="text" class="form-control" id="capa" name="capa" placeholder="ex.: iliada.jpg"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="id_editora" class="form-label">Editora</label>

@@ -12,42 +12,6 @@ if ((!isset($_SESSION['id_usuario']) == true) && (!isset($_SESSION['nome']) == t
 
 include '../conexao.php';
 
-// Condições ternárias (tipo if e else só que mais compactado)
-$pesquisa_titulo = isset($_POST['pesquisa_titulo']) ? $_POST['pesquisa_titulo'] : '';
-$pesquisa_autor = isset($_POST['pesquisa_autor']) ? $_POST['pesquisa_autor'] : '';
-$pesquisa_genero = isset($_POST['pesquisa_genero']) ? $_POST['pesquisa_genero'] : '';
-$pesquisa_editora = isset($_POST['pesquisa_editora']) ? $_POST['pesquisa_editora'] : '';
-
-// Consultas das opções de genero, autor e editora para os filtros
-$consulta_genero = "SELECT id_genero, genero FROM genero";
-$consulta_editora = "SELECT id_editora, editora FROM editora";
-$consulta_autor = "SELECT id_autor, nome FROM autor";
-
-// Consultar livros com os filtros aplicados
-$sql = "SELECT livro.id_livro, livro.titulo, livro.isbn, livro.capa, autor.nome AS autor 
-        FROM livro
-        JOIN livro_autor ON livro.id_livro = livro_autor.id_livro
-        JOIN autor ON livro_autor.id_autor = autor.id_autor
-        LEFT JOIN genero ON livro.id_genero = genero.id_genero
-        LEFT JOIN editora ON livro.id_editora = editora.id_editora
-        WHERE livro.status = 'disponível'";
-
-// Adição de texto a consulta que será feita 
-// LIKE é um operador que busca padrões de texto em SQL
-if ($pesquisa_titulo) {
-    $sql .= " AND livro.titulo LIKE '%$pesquisa_titulo%'";
-}
-if ($pesquisa_autor) {
-    $sql .= " AND autor.nome LIKE '%$pesquisa_autor%'";
-}
-if ($pesquisa_genero) {
-    $sql .= " AND genero.id_genero = '$pesquisa_genero'";
-}
-if ($pesquisa_editora) {
-    $sql .= " AND editora.id_editora = '$pesquisa_editora'";
-}
-
-$consulta = $conexao->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +41,19 @@ $consulta = $conexao->query($sql);
         body {
             color: #666;
             padding-top: 6.5%;
-            min-height: 100%;
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        html {
+            height: 100%;
+            margin: 0;
+        }
+
+        footer {
+            margin-top: auto;
         }
 
         .card {
@@ -111,11 +87,13 @@ $consulta = $conexao->query($sql);
             width: 100%;
             height: auto;
             max-height: 200px;
+            min-height: 200px;
             object-fit: contain;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
 
         #capa-livro {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+           
         }
 
         .card-body .card-title,
@@ -145,7 +123,7 @@ $consulta = $conexao->query($sql);
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="livros.php">Livros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Empréstimos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="emprestimos.php">Empréstimos</a></li>
                     <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
                 </ul>
             </div>
@@ -216,14 +194,14 @@ $consulta = $conexao->query($sql);
         <div class="container py-5" id="container-livros">
             <div class="row">
                 <?php
-                // Consulta que engloba todos os dados utilizados na exibição de livro
-                $sql = "SELECT livro.id_livro, livro.titulo, livro.isbn, livro.capa, autor.nome AS autor, genero.genero AS genero, editora.editora AS editora
+                $sql = "SELECT livro.id_livro, livro.titulo, livro.isbn, livro.capa, autor.nome AS autor 
                         FROM livro
                         JOIN livro_autor ON livro.id_livro = livro_autor.id_livro
                         JOIN autor ON livro_autor.id_autor = autor.id_autor
-                        JOIN genero ON livro.id_genero = genero.id_genero
-                        JOIN editora ON livro.id_editora = editora.id_editora
+                        LEFT JOIN genero ON livro.id_genero = genero.id_genero
+                        LEFT JOIN editora ON livro.id_editora = editora.id_editora
                         WHERE livro.status = 'disponível'";
+
 
                 // Adicão de filtros - se o campo não estiver vazio será adicionado a consulta final -> gerando filtragem
                 if (isset($_GET['titulo']) && $_GET['titulo'] != '') {

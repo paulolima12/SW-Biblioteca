@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require('conexao.php');
 
@@ -13,7 +13,7 @@ if ($resultado_usuario && $resultado_usuario->num_rows == 1) {
     $_SESSION['id_usuario'] = $resultado_usuario_dados['id_usuario'];
     $_SESSION['nome'] = $resultado_usuario_dados['nome'];
     $_SESSION['email'] = $resultado_usuario_dados['email'];
-    header('Location: pages/livros.php'); 
+    header('Location: pages/livros.php');
     exit();
 }
 
@@ -22,10 +22,16 @@ $resultado_funcionario = $conexao->query($consulta_funcionario);
 
 if ($resultado_funcionario && $resultado_funcionario->num_rows == 1) {
     $resultado_funcionario_dados = $resultado_funcionario->fetch_assoc();
+
+    if ($resultado_funcionario_dados['status'] == 'inativo') {
+        echo "<script type='text/javascript'>alert('Sua conta de funcionário está inativa no sistema. Faça contato com um administrador para saber mais.'); window.location.href='index.html';</script>";
+        exit();
+    };
+
     $_SESSION['id_funcionario'] = $resultado_funcionario_dados['id_funcionario'];
     $_SESSION['nome'] = $resultado_funcionario_dados['nome'];
     $_SESSION['email'] = $resultado_funcionario_dados['email'];
-    header('Location: dashboard-func/index.php'); 
+    header('Location: dashboard-func/index.php');
     exit();
 }
 
@@ -37,7 +43,7 @@ if ($resultado_administrador && $resultado_administrador->num_rows == 1) {
     $_SESSION['id_adm'] = $resultado_administrador_dados['id_adm'];
     $_SESSION['nome'] = $resultado_administrador_dados['nome'];
     $_SESSION['email'] = $resultado_administrador_dados['email'];
-    header('Location: dashboard-admin/index.php'); 
+    header('Location: dashboard-admin/index.php');
     exit();
 } else {
     // Redirecionar para o login com msg de erro

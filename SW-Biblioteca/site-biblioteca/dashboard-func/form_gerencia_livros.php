@@ -29,7 +29,7 @@ include 'menu.php';
             <form action="atualiza_livros.php?id_livro=<?php echo $id_livro; ?>" method="POST">
 
                 <?php
-                $sql = "SELECT livro.id_livro, livro.isbn, livro.titulo, livro.ano_publicacao, livro.status,
+                $sql = "SELECT livro.id_livro, livro.isbn, livro.titulo, livro.ano_publicacao, livro.status, livro.capa,
                         livro.id_editora, livro.id_genero
                         FROM livro
                         WHERE livro.id_livro = $id_livro";
@@ -42,20 +42,24 @@ include 'menu.php';
                 <input type="hidden" name="isbn_atual" value="<?php echo $dados['isbn']; ?>">
 
                 <div class="mb-3">
+                    <label for="isbn" class="form-label">ISBN</label>
+                    <input type="text" class="form-control" name="isbn" maxlength="14" minlength="14"
+                        value="<?php echo $dados['isbn']; ?>" required>
+                </div>
+                <div class="mb-3">
                     <label for="titulo" class="form-label">Título</label>
                     <input type="text" class="form-control" name="titulo" value="<?php echo $dados['titulo']; ?>"
                         required>
                 </div>
                 <div class="mb-3">
-                    <label for="isbn" class="form-label">ISBN</label>
-                    <input type="text" class="form-control" name="isbn" value="<?php echo $dados['isbn']; ?>" required>
-                </div>
-                <div class="mb-3">
                     <label for="ano_publicacao" class="form-label">Ano de publicação</label>
-                    <input type="number" class="form-control" name="ano_publicacao"
+                    <input type="number" class="form-control" name="ano_publicacao" maxlength="4" minlength="4"
                         value="<?php echo $dados['ano_publicacao']; ?>" required>
                 </div>
-
+                <div class="mb-3">
+                    <label for="capa" class="form-label">Arquivo da capa do livro</label>
+                    <input type="text" class="form-control" name="capa" value="<?php echo $dados['capa']; ?>" required>
+                </div>
                 <div class="mb-3">
                     <label for="id_editora" class="form-label">Editora</label>
                     <select class="form-select" id="id_editora" name="id_editora" required>

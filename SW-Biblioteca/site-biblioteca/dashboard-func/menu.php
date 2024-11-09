@@ -86,7 +86,7 @@ if ((!isset($_SESSION['id_funcionario']) == true) && (!isset($_SESSION['nome']) 
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Painel de livros
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index_emprestimos.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Painel de empréstimos
                         </a>
@@ -94,19 +94,19 @@ if ((!isset($_SESSION['id_funcionario']) == true) && (!isset($_SESSION['nome']) 
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Painel de usuários
                         </a>
-                        <div class="sb-sidenav-menu-heading">Ações</div>
+                        <!-- <div class="sb-sidenav-menu-heading">Ações</div>
                         <a class="nav-link" href="#">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Gerenciar livros
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index_emprestimos.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Gerenciar empréstimos
                         </a>
                         <a class="nav-link" href="#">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Gerenciar usuários
-                        </a>
+                        </a> -->
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

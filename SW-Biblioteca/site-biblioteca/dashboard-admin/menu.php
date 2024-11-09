@@ -40,9 +40,7 @@ if ((!isset($_SESSION['id_adm']) == true) && (!isset($_SESSION['nome']) == true)
             font-weight: 700;
         }
 
-        h1,
-        h2,
-        h3 {
+        h1, h2, h3 {
             font-family: 'Catamaran', sans-serif;
             font-weight: 400;
         }
@@ -90,7 +88,7 @@ if ((!isset($_SESSION['id_adm']) == true) && (!isset($_SESSION['nome']) == true)
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Painel de livros
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index_funcionarios.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Painel de funcionários
                         </a>
@@ -138,19 +136,19 @@ if ((!isset($_SESSION['id_adm']) == true) && (!isset($_SESSION['nome']) == true)
                                 </div>
                             </nav>
                         </div> -->
-                        <div class="sb-sidenav-menu-heading">Ações</div>
+                        <!-- <div class="sb-sidenav-menu-heading">Ações</div>
                         <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Gerenciar livros
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index_funcionarios.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Gerenciar funcionários
                         </a>
                         <a class="nav-link" href="index_usuarios.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Gerenciar usuários
-                        </a>
+                        </a> -->
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

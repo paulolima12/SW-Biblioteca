@@ -2,13 +2,13 @@
 session_start();
 
 if (isset($_SESSION['id_usuario'])) {
-    header('Location: pages/livros.php'); 
+    header('Location: pages/livros.php');
     exit();
 } elseif (isset($_SESSION['id_funcionario'])) {
-    header('Location: dashboard-func/index.php'); 
+    header('Location: dashboard-func/index.php');
     exit();
 } elseif (isset($_SESSION['id_adm'])) {
-    header('Location: dashboard-admin/index.php'); 
+    header('Location: dashboard-admin/index.php');
     exit();
 }
 ?>
@@ -17,7 +17,7 @@ if (isset($_SESSION['id_usuario'])) {
 <html lang="pt-br">
 
 <head>
-   
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Login da Biblioteca Online" />
@@ -44,19 +44,23 @@ if (isset($_SESSION['id_usuario'])) {
             background-size: cover;
             padding-top: 7%;
         }
+
         #contact .container-sm {
             background-color: rgba(255, 255, 255, 0.86);
             border-radius: 15px;
             padding: 2em;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
         }
+
         #contact h2 {
             color: #333;
             font-weight: 700;
         }
+
         #contact p.lead {
             color: #666;
         }
+
         #contact input[type="email"],
         #contact input[type="password"] {
             background-color: rgba(255, 255, 255, 0.9);
@@ -65,6 +69,7 @@ if (isset($_SESSION['id_usuario'])) {
             padding: 0.75em;
             font-size: 1em;
         }
+
         #contact input[type="submit"] {
             background-color: #ff4081;
             color: white;
@@ -77,9 +82,11 @@ if (isset($_SESSION['id_usuario'])) {
             transition: background-color 0.3s ease;
             margin-top: 1em;
         }
+
         #contact input[type="submit"]:hover {
             background-color: #e03370;
         }
+        
     </style>
 </head>
 

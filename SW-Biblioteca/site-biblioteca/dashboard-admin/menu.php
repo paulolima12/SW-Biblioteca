@@ -96,6 +96,19 @@ if ((!isset($_SESSION['id_adm']) == true) && (!isset($_SESSION['nome']) == true)
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Painel de usuários
                         </a>
+                        <div class="sb-sidenav-menu-heading">Ações</div> 
+                        <a class="nav-link" href="form_cadastro_editora.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Cadastrar editora
+                        </a>
+                        <a class="nav-link" href="form_cadastro_genero.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Cadastrar gênero
+                        </a>
+                        <a class="nav-link" href="form_cadastro_autor.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Cadastrar autor
+                        </a>
                         <!-- <div class="sb-sidenav-menu-heading">Interface</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                             aria-expanded="false" aria-controls="collapsePages">
